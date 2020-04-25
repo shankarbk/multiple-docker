@@ -11,7 +11,7 @@ script:
 
 after_success:
   - docker build -t shankar/multiple-client ./client 
-  - docker build -t shankar/multiple-ngnix ./ngnix
+  - docker build -t shankar/multiple-nginx ./nginx
   - docker build -t shankar/multiple-server ./server
   - docker build -t shankar/multiple-worker ./worker
   
@@ -20,7 +20,7 @@ after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
   - docker push shankar/multiple-client
-  - docker push shankar/multiple-ngnix
+  - docker push shankar/multiple-nginx
   - docker push shankar/multiple-server
   - docker push shankar/multiple-worker
 
