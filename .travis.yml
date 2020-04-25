@@ -4,24 +4,24 @@ services:
   - docker
 
 before_install:
-  - docker build -t shankarbk/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t sbk5/react-test -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run -e CI=true shankarbk/react-test npm test
 
 after_success:
-  - docker build -t shankarbk/multiple-client ./client
-  - docker build -t shankarbk/multiple-nginx ./nginx
-  - docker build -t shankarbk/multiple-server ./server
-  - docker build -t shankarbk/multiple-worker ./worker
+  - docker build -t sbk5/multiple-client ./client
+  - docker build -t sbk5/multiple-nginx ./nginx
+  - docker build -t sbk5/multiple-server ./server
+  - docker build -t sbk5/multiple-worker ./worker
   
 # login to doccker CLI
 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
-  - docker push shankarbk/multiple-client
-  - docker push shankarbk/multiple-nginx
-  - docker push shankarbk/multiple-server
-  - docker push shankarbk/multiple-worker
+  - docker push sbk5/multiple-client
+  - docker push sbk5/multiple-nginx
+  - docker push sbk5/multiple-server
+  - docker push sbk5/multiple-worker
 
 
